@@ -71,6 +71,10 @@ output.elasticsearch:
     ${ELASTICSEARCH_WORKER:+worker: ${ELASTICSEARCH_WORKER}}
     ${ELASTICSEARCH_PATH:+path: ${ELASTICSEARCH_PATH}}
     ${ELASTICSEARCH_BULK_MAX_SIZE:+bulk_max_size: ${ELASTICSEARCH_BULK_MAX_SIZE}}
+    pipelines:
+          - pipeline: "app_logs_transform"
+            when.contains:
+              topic: "app"
 EOF
 }
 
