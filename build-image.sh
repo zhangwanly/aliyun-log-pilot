@@ -1,20 +1,2 @@
 #!/usr/bin/env bash
-#
-# build docker image
-#
-
-build()
-{
-    echo -e "building image: log-pilot:latest\n"
-
-    docker build -t log-pilot:latest -f Dockerfile.$1 .
-}
-
-case $1 in
-fluentd)
-    build fluentd
-    ;;
-*)
-    build filebeat
-    ;;
-esac
+docker build -t harbor.chengta-inc.com/infra/logging-collector:filebeat-7.6.2 -f Dockerfile.filebeat .

@@ -46,4 +46,14 @@
     {{end}}
   </record>
 </filter>
+{{range $key, $value := .Tags}}
+{{if eq $key "java"}}
+<match docker.**>
+  @type detect_exceptions
+  remove_tag_prefix docker
+  message log
+  multiline_flush_interval 1
+</match>
+{{end}}
+{{end}}
 {{end}}

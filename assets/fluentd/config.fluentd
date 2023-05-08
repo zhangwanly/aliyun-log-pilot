@@ -73,7 +73,7 @@ if [ -z "$ELASTICSEARCH_HOSTS" ]; then
 fi
 
 cat >> $FLUENTD_CONFIG << EOF
-<match docker.**>
+<match **>
 @type elasticsearch
 hosts $ELASTICSEARCH_HOSTS
 reconnect_on_error true
